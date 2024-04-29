@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import callAxios from './helpers/tmdbApi'
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      {/* {callAxios()} */}
     </>
   )
 }
