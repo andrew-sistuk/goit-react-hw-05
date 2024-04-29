@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 import './App.css';
+import 'modern-normalize';
 
 function App() {
 
