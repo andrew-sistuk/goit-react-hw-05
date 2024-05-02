@@ -1,0 +1,31 @@
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  /* background-image: linear-gradient(135deg, #d1d1b8 0%, #7b8b8f 100%); */
+  background-image: linear-gradient(135deg, #204060 0%, #808080 100%);
+}
+
+.navigation {
+  display: flex;
+  gap: 150px;
+  align-items: center;
+}
+
+.main-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+.list-pages-links {
+    display: flex;
+}
+
+.list-item {
+    padding: 10px 12px;
+    background-image: linear-gradient(135deg, #39595e 0%, #848891 100%);
+}
+
+.link {
+
+}
