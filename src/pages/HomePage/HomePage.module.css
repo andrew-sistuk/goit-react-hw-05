@@ -1,0 +1,13 @@
+.header {
+  font-family: 'Jaro', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 72px;
+  text-align: end;
+}
+
+.hero-img {
+  border-radius: 24px;
+  filter: drop-shadow(0 0 0.75rem #413c87);
+}

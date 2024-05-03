@@ -14,10 +14,10 @@ function App() {
   return (
     <>
      <Navigation />
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes> */}
+      </Routes>
     </>
   );
 }

@@ -7,7 +7,7 @@ const Navigation = () => {
     <header className={clsx(css.header, 'container')}>
       <nav className={css.navigation}>
         <Link className={css['main-logo']} to="./">
-          <img src="../../../public/wolf.svg" alt="logo" width={48} height={48} />
+          <img src='/wolf.svg' alt="logo" width={72} height={72} />
         </Link>
         <ul className={css['list-pages-links']}>
           <li className={css['list-item']}>
