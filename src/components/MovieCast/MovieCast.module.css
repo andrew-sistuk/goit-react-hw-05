@@ -1,0 +1,22 @@
+.casts-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 24px;
+  text-align: center;
+}
+
+.list-item {
+  width: calc((100% - 6 * 12px) / 7);
+}
+
+.img {
+  border-radius: 8px;
+  height: 250px;
+  margin-bottom: 12px;
+}
+
+.actor {
+  font-family: 'Passion One', sans-serif;
+  font-weight: 400;
+}

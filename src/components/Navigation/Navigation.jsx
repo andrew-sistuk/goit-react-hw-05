@@ -19,7 +19,7 @@ const Navigation = () => {
             </NavLink>
           </li>
           <li className={css['list-item']}>
-            <NavLink className={handleClassLink} to="./movie">
+            <NavLink className={handleClassLink} to="./movies">
               Movie
             </NavLink>
           </li>

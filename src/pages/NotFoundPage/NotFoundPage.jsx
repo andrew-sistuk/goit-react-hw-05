@@ -12,7 +12,7 @@ const NotFoundPage = () => {
         <Link to="/" className={clsx(css.button, css.red)}>
           Go Home page
         </Link>
-        <Link to={location.state} className={clsx(css.button, css.blue)}>
+        <Link to={location.state ? location.state : '/'} className={clsx(css.button, css.blue)}>
           Go Back
         </Link>
       </div>
