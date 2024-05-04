@@ -1,7 +1,10 @@
+.hero {
+    margin-bottom: 32px;
+}
+
 .header {
-  font-family: 'Jaro', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-family: "Passion One", sans-serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 72px;
   text-align: end;
@@ -10,4 +13,21 @@
 .hero-img {
   border-radius: 24px;
   filter: drop-shadow(0 0 0.75rem #413c87);
+  opacity: 0.7;
+}
+
+.filter-tranding {
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin: 0;
+  width: 150px;
+  padding: 5px 6px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  text-align: start;
+  outline: transparent;
+  border-color: #c0c0c0;
+  background-color: rgba(49, 43, 97, 0.3)
 }

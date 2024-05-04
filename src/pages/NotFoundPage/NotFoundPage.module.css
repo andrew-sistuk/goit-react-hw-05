@@ -1,36 +1,39 @@
-.notfound {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    width: 100vh;
+.main-img {
     height: 80vh;
     margin: 0 auto;
-    background-image: url('../../assets/404.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-clip: border-box;
+}
+.links {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100vh;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-clip: border-box;
+  margin-bottom: 32px;
 }
 
 .button {
-    min-width: 150px;
-    padding: 4px 8px;
-    border-radius: 24px;
-    color: #C0C0C0;
-    transition: trasnform 0.5ms linear;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  min-width: 150px;
+  padding: 4px 8px;
+  border-radius: 24px;
+  color: #c0c0c0;
+  transition: trasnform 0.5ms linear;
 }
 .button:hover,
 .button:focus {
-    color: #C0C0C0;
-    transform: scale(1.05);
+  color: #c0c0c0;
+  transform: scale(1.05);
 }
-
 
 .blue {
-    /* background-color: DodgerBlue; */
-    background-image: linear-gradient(225deg, #0e0466 0%, #2ee1f9 100%);
+  background-image: linear-gradient(225deg, #0e0466 0%, #2ee1f9 100%);
 }
 .red {
-    /* background-color: Crimson; */
-    background-image: linear-gradient(135deg, #40010b 0%, #f7070b 100%);
+  background-image: linear-gradient(135deg, #40010b 0%, #f7070b 100%);
 }

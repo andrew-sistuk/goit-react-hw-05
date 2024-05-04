@@ -9,6 +9,7 @@
   justify-content: space-between;
   gap: 150px;
   align-items: flex-end;
+  text-align: center;
 }
 
 .main-logo {
@@ -19,23 +20,19 @@
 
 .list-pages-links {
   display: flex;
-  gap: 32px;
-}
-
-.list-item {
-  min-width: 100px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  padding: 10px 12px;
-  /* background-image: linear-gradient(135deg, #4a0060 0%, #075eb5 100%); */
-
-  /* background:; */
-  border-bottom: 2px solid rgba(27, 24, 56, 0.5);
 }
 
 .link {
-  font-family: 'Jaro', sans-serif;
-  font-optical-sizing: auto;
+  display: block;
+  font-family: 'Passion One', sans-serif;
   font-weight: 400;
   font-style: normal;
+  min-width: 150px;
+  padding: 10px 12px;
+}
+
+.active {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: rgba(49, 43, 97, 0.4);
 }

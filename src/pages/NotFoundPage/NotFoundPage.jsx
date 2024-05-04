@@ -7,12 +7,15 @@ const NotFoundPage = () => {
   const location = useLocation();
   return (
     <div className={css.notfound}>
-      <Link to="/" className={clsx(css.button, css.red)}>
-        Go Home page
-      </Link>
-      <Link to={location.state} className={clsx(css.button, css.blue)}>
-        Go Back
-      </Link>
+      <img className={css['main-img']} src="/src/assets/404.png" alt="404 not found" />
+      <div className={css.links}>
+        <Link to="/" className={clsx(css.button, css.red)}>
+          Go Home page
+        </Link>
+        <Link to={location.state} className={clsx(css.button, css.blue)}>
+          Go Back
+        </Link>
+      </div>
     </div>
   );
 };
