@@ -7,7 +7,7 @@ import css from './MovieCast.module.css';
 
 const MovieCast = () => {
   const [casts, setCasts] = useState([]);
-  const [seeAll, setSeeAll] = useState(true);
+  const [viewAll, setSeeAll] = useState(true);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -32,11 +32,11 @@ const MovieCast = () => {
   }
 
    function paintCast(casts) {
-    if(seeAll && casts.length <= 14) {
+    if(viewAll && casts.length <= 14) {
       setSeeAll(false);
    }
 
-    if(seeAll) {
+    if(viewAll) {
       casts = casts.slice(0, 14)
     }
 
@@ -60,7 +60,7 @@ const MovieCast = () => {
         <ul className={css['casts-list']}>
           {paintCast(casts)}
         </ul>
-        { seeAll && (
+        { viewAll && (
         <button className={css['view-button']} type="button" onClick={handleSeeAll}>
           View All
         </button>
