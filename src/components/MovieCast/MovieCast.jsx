@@ -61,8 +61,8 @@ const MovieCast = () => {
           {paintCast(casts)}
         </ul>
         { seeAll && (
-        <button type="button" onClick={handleSeeAll}>
-          See All
+        <button className={css['view-button']} type="button" onClick={handleSeeAll}>
+          View All
         </button>
         ) }
       </section>

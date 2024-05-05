@@ -5,7 +5,6 @@
 .header {
   font-family: "Passion One", sans-serif;
   font-weight: 700;
-  font-style: normal;
   font-size: 72px;
   text-align: end;
 }
@@ -18,8 +17,6 @@
 
 .filter-tranding {
   font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 14px;
   margin: 0;
   width: 150px;

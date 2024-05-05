@@ -1,6 +1,6 @@
 .main-img {
-    height: 80vh;
-    margin: 0 auto;
+  height: 80vh;
+  margin: 0 auto;
 }
 
 .links {
@@ -14,8 +14,7 @@
 }
 
 .button {
-  font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
+  font-family: 'Poetsen One', sans-serif;
   min-width: 150px;
   padding: 4px 8px;
   border-radius: 24px;
