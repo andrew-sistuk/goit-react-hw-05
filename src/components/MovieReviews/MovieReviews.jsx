@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {
-  
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
 
@@ -27,7 +26,7 @@ const MovieReviews = () => {
       <section className={css.reviews}>
         <ul>
           {reviews.map(review => {
-            <li key={review.id}>{review}</li>;
+            return <li key={review.id}>{review.author}</li>;
           })}
         </ul>
       </section>

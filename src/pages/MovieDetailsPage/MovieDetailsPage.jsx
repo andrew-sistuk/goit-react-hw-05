@@ -19,9 +19,13 @@ const MovieDetailsPage = () => {
       try {
         const movieDetail = await callMoviesDetails(movieId);
         setMovie(movieDetail);
-      } finally {
-        console.log(movie);
+      } 
+      catch(error) {
+        console.log(error);
       }
+      // finally {
+      //   console.log(movie);
+      // }
     }
     initPage();
   }, [movieId]);

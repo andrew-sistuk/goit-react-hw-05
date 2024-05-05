@@ -11,11 +11,11 @@ const HomePage = () => {
   const [time_window, setTimeWindow] = useState('day');
   // const location = useLocation();
   useEffect(() => {
-    console.log(time_window);
+    // console.log(time_window);
     async function setTrendings() {
       const info = await callTrendings(time_window);
       setMovies(info.results);
-      console.log(info.results);
+      // console.log(info.results);
     }
     setTrendings();
   }, [time_window]);
@@ -25,9 +25,6 @@ const HomePage = () => {
       <section className={clsx(css.hero, 'container')}>
         <h1 className={css.header}>Trending movies</h1>
         <img className={css['hero-img']} src="/src/assets/hero.png" alt="hero" />
-        {/* <Link to="./somethink" state={location}>
-          Click me
-        </Link> */}
       </section>
       <section className={clsx(css.movies, 'container')}>
         <select
