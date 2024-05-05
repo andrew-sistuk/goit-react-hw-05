@@ -1,6 +1,6 @@
 .header {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   width: 100%;
 }
 
@@ -13,8 +13,11 @@
 }
 
 .main-logo {
-  width: 72px;
-  height: 72px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 64px;
+  height: 64px;
   filter: drop-shadow(0 0 0.75rem #413c87);
 }
 

@@ -1,0 +1,14 @@
+.video {
+  width: 80%;
+  height: 80%;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 32px;
+  height: 32px;
+  color: rgb(49, 43, 97);
+  cursor: pointer;
+}

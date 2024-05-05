@@ -29,3 +29,9 @@ export async function callTypeInfo(id, type) {
   // console.log(response.data);
   return response.data;
 }
+
+export async function callTrailer(id) {
+  const response = await axios.get(`/movie/${id}/videos`, options);
+  // console.log(response.data);
+  return response.data;
+}

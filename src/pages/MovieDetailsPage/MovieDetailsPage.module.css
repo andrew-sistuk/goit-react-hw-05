@@ -5,7 +5,7 @@
 
 .button-back {
   font-family: 'Passion One', sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -14,26 +14,26 @@
 .main-data {
   display: flex;
   gap: 12px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .movie-header {
-  font-size: 72px;
+  font-size: 56px;
   font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .main-info {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   padding: 12px 24px;
 }
 
 .main-img {
-  border-radius: 12px;
-  width: 380px;
+  width: 100%;
 }
 
 .sprecific-info {
@@ -74,4 +74,41 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   background-color: rgba(49, 43, 97, 0.4);
+}
+
+.trailer-button {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: 300px;
+  border-radius: 12px;
+  border: transparent;
+  outline: transparent;
+  background-color: transparent;
+}
+
+.overlay-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(49, 43, 97, 0.5);
+  transform: translateX(-100%);
+  transition: transform 0.3s linear;
+}
+
+.icon-play {
+  width: 30%;
+  height: 30%;
+  fill: #c0c0c0;
+}
+
+.trailer-button:hover .overlay-play{
+  transform: translateX(0);
 }

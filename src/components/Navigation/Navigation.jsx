@@ -11,6 +11,7 @@ const Navigation = () => {
       <nav className={css.navigation}>
         <Link className={css['main-logo']} to="./">
           <img src="/wolf.svg" alt="logo" width={72} height={72} />
+          <p>Wolf Movies</p>
         </Link>
         <ul className={css['list-pages-links']}>
           <li className={css['list-item']}>

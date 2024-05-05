@@ -3,6 +3,8 @@ import { callMoviesDetails } from '../../helpers/tmdbApi';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { FaPlayCircle } from 'react-icons/fa';
+import VideoModal from '../../components/VideoModal/VideoModal';
 import clsx from 'clsx';
 
 import css from './MovieDetailsPage.module.css';
@@ -10,6 +12,7 @@ import css from './MovieDetailsPage.module.css';
 const MovieDetailsPage = () => {
   const path = 'https://image.tmdb.org/t/p/original';
   const [movie, setMovie] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
 
@@ -19,8 +22,7 @@ const MovieDetailsPage = () => {
       try {
         const movieDetail = await callMoviesDetails(movieId);
         setMovie(movieDetail);
-      } 
-      catch(error) {
+      } catch (error) {
         console.log(error);
       }
       // finally {
@@ -50,16 +52,23 @@ const MovieDetailsPage = () => {
     return clsx(css.link, isActive && css.active);
   };
 
+  function handleShowModal() {
+    setShowModal(prevValue => !prevValue);
+  }
+
   return (
     movie && (
-      <section className={css.movie}>
+      <section className={clsx(css.movie, 'container')}>
         <Link className={css['button-back']} to={location.state ? location.state : '/'}>
           <RiArrowGoBackFill /> Back
         </Link>
         <div className={css['main-data']}>
-          {!!movie.poster_path && (
+          <button className={css['trailer-button']} type="button" onClick={handleShowModal}>
             <img className={css['main-img']} src={path + movie.poster_path} alt={movie.title} />
-          )}
+            <div className={css['overlay-play']}>
+              <FaPlayCircle className={css['icon-play']} />
+            </div>
+          </button>
           <div className={css['main-info']}>
             <h1 className={css['movie-header']}>{movie.title}</h1>
             <div className={css['sprecific-info']}>
@@ -67,13 +76,13 @@ const MovieDetailsPage = () => {
               <p>{writeInfo(movie.genres)}</p>
             </div>
 
-            <p>{movie.tagline}</p>
             <h2>Vote</h2>
             <p>{`avg: ${movie.vote_average} count: ${movie.vote_count}`}</p>
             <h2>Detail</h2>
             <p>{`Popularity: ${movie.popularity}`}</p>
             <p>{`Runtime: ${movie.runtime}`}</p>
             <p>{`Counties: ${writeInfo(movie.production_countries)}`}</p>
+            <p>{movie.tagline}</p>
             <p>{movie.overview}</p>
             <div className={css.backdrop} style={setBackground(movie.backdrop_path)}>
               {' '}
@@ -93,6 +102,7 @@ const MovieDetailsPage = () => {
           </li>
         </ul>
         <Outlet />
+        <VideoModal isOpen={showModal} handleClose={handleShowModal} />
       </section>
     )
   );
