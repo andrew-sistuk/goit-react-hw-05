@@ -56,7 +56,7 @@ const MoviesPage = () => {
       {movies.length > 0 && (
         <MovieList movies={movies} />
       )}
-      {loading && <PacmanLoader color="#36d7b7" />}
+      {loading && <PacmanLoader color="#c0c0c0" />}
     </section>
   );
 };
