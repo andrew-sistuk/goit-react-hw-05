@@ -1,9 +1,9 @@
 .hero {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .header {
-  font-family: "Passion One", sans-serif;
+  font-family: 'Passion One', sans-serif;
   font-weight: 700;
   font-size: 72px;
   text-align: end;
@@ -16,7 +16,7 @@
 }
 
 .filter-tranding {
-  font-family: "Poetsen One", sans-serif;
+  font-family: 'Poetsen One', sans-serif;
   font-size: 14px;
   margin: 0;
   width: 150px;
@@ -26,5 +26,5 @@
   text-align: start;
   outline: transparent;
   border-color: #c0c0c0;
-  background-color: rgba(49, 43, 97, 0.3)
+  background-color: rgba(49, 43, 97, 0.3);
 }
