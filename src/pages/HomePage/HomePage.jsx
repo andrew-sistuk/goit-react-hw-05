@@ -2,25 +2,30 @@
 import { useEffect, useState } from 'react';
 import MovieList from '../../components/MovieList/MovieList';
 import { callTrendings } from '../../helpers/tmdbApi';
+import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
 
 import css from './HomePage.module.css';
 import clsx from 'clsx';
 
 const HomePage = () => {
+  const [error, setError] = useState(false);
   const [movies, setMovies] = useState([]);
   const [time_window, setTimeWindow] = useState('day');
-  // const location = useLocation();
   useEffect(() => {
-    // console.log(time_window);
     async function setTrendings() {
-      const info = await callTrendings(time_window);
-      setMovies(info.results);
-      // console.log(info.results);
+      try {
+        const info = await callTrendings(time_window);
+        setMovies(info.results);
+      }
+      catch(errorMsg) {
+        setError(true);
+        console.log(errorMsg);
+      } 
     }
     setTrendings();
   }, [time_window]);
-  // console.log(location);
-  return (
+
+  return error ? <ErrorMsg/> : (
     <main>
       <section className={clsx(css.hero, 'container')}>
         <h1 className={css.header}>Trending movies</h1>

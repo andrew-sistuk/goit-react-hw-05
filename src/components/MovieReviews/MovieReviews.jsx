@@ -19,9 +19,9 @@ const MovieReviews = () => {
       try {
         const reviewsInit = await callTypeInfo(movieId, 'reviews');
         setReviews(reviewsInit.results);
-      } catch (error) {
+      } catch (errorMsg) {
         setError(true);
-        console.log(error);
+        console.log(errorMsg);
       }
     }
     initPage();

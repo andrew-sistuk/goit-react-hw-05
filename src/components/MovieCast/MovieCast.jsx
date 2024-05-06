@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { setImgPath } from '../../helpers/imgPath';
 import ViewButton from '../ViewButton/ViewButton';
-// import ErrorMsg from '../ErrorMsg/ErrorMsg';
+import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 import css from './MovieCast.module.css';
 
@@ -19,11 +19,10 @@ const MovieCast = () => {
     async function initPage() {
       try {
         const castInit = await callTypeInfo(movieId, 'credits');
-        // console.log(castInit);
         setCasts(castInit.cast);
-      } catch (error) {
+      } catch (errorMsg) {
         setError(true)
-        console.log(error);
+        console.log(errorMsg);
       }
     }
     initPage();
@@ -59,7 +58,7 @@ const MovieCast = () => {
   }
 
   return (
-    error ? <div> </div> : casts.length === 0 ? <p>No cast has been added to this movie yet</p> : (
+    error ? <ErrorMsg/> : casts.length === 0 ? <p>No cast has been added to this movie yet</p> : (
       <section className={css.casts}>
         <ul className={css['casts-list']}>
           {paintCast(casts)}

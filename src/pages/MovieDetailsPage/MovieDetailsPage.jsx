@@ -5,12 +5,14 @@ import { format } from 'date-fns';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { FaPlayCircle } from 'react-icons/fa';
 import VideoModal from '../../components/VideoModal/VideoModal';
+import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
 import clsx from 'clsx';
 
 import css from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const path = 'https://image.tmdb.org/t/p/original';
+  const [error, setError] = useState(false);
   const [movie, setMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { movieId } = useParams();
@@ -22,12 +24,10 @@ const MovieDetailsPage = () => {
       try {
         const movieDetail = await callMoviesDetails(movieId);
         setMovie(movieDetail);
-      } catch (error) {
-        console.log(error);
+      } catch (errorMsg) {
+        setError(true);
+        console.log(errorMsg);
       }
-      // finally {
-      //   console.log(movie);
-      // }
     }
     initPage();
   }, [movieId]);
@@ -56,7 +56,7 @@ const MovieDetailsPage = () => {
     setShowModal(prevValue => !prevValue);
   }
 
-  return (
+  return error ? <ErrorMsg/> : (
     movie && (
       <section className={clsx(css.movie, 'container')}>
         <Link className={css['button-back']} to={location.state ? location.state : '/'}>

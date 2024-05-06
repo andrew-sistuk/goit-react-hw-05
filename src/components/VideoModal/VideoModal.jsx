@@ -3,10 +3,12 @@ import { MdOutlineClose } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { callTrailer } from '../../helpers/tmdbApi';
+import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 import css from './VideoModal.module.css';
 
 const VideoModal = ({ isOpen, handleClose }) => {
+  const [error, setError] = useState(false);
   const [urlVideo, setUrlVideo] = useState('');
   const { movieId } = useParams();
   useEffect(() => {
@@ -15,8 +17,9 @@ const VideoModal = ({ isOpen, handleClose }) => {
         const trailer = await callTrailer(movieId);
         setUrlVideo(trailer.results[0].key);
         console.log(trailer);
-      } catch (error) {
-        console.log(error);
+      } catch (errorMsg) {
+        setError(true);
+        console.log(errorMsg);
       }
     }
     initPage();
@@ -43,13 +46,17 @@ const VideoModal = ({ isOpen, handleClose }) => {
       preventScroll={true}
       onRequestClose={handleClose}
     >
-      <iframe
-        className={css.video}
-        src={`https://www.youtube.com/embed/${urlVideo}`}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      {error ? (
+        <ErrorMsg />
+      ) : (
+        <iframe
+          className={css.video}
+          src={`https://www.youtube.com/embed/${urlVideo}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
       <MdOutlineClose className={css.close} onClick={handleClose} />
     </ReactModal>
   );
