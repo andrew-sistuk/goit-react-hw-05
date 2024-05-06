@@ -1,23 +1,24 @@
-import { Formik, Form, Field } from 'formik';
+// import { Formik, Form, Field } from 'formik';
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
 
 import css from './MoviesPage.module.css';
 import clsx from 'clsx';
 import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+import SearchBar from '../../components/SearchBar/SearchBar';
+
 
 const MoviesPage = () => {
   const [error, setError] = useState(false);
+
+  function changeQuery(value) {
+    // setQuery(value);
+    // setPage(1);
+  }
+
   return error ? <ErrorMsg/> :  (
     <section className={clsx(css.movies, 'container')}>
-      <Formik>
-        <Form className={css['form-search']}>
-          <Field className={css['searchbar']} type="text" name="username" placeholder='Search you best movie'/>
-          <button className={css['submit-button']} type="submit">
-            <FaSearch />
-          </button>
-        </Form>
-      </Formik>
+      <SearchBar changeFilter={changeQuery} />
     </section>
   );
 };
