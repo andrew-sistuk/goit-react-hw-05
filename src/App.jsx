@@ -23,9 +23,7 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} />
 
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-          {/* <Suspense fallback={<div>Loading...</div>}> */}
-            <Route path="cast" element={<MovieCast />} />
-          {/* </Suspense> */}
+          <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />

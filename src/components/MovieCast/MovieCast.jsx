@@ -2,10 +2,13 @@ import { callTypeInfo } from '../../helpers/tmdbApi';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { setImgPath } from '../../helpers/imgPath';
+import ViewButton from '../ViewButton/ViewButton';
+// import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 import css from './MovieCast.module.css';
 
 const MovieCast = () => {
+  const [error, setError] = useState(false);
   const [casts, setCasts] = useState([]);
   const [viewAll, setSeeAll] = useState(true);
   const { movieId } = useParams();
@@ -19,6 +22,7 @@ const MovieCast = () => {
         // console.log(castInit);
         setCasts(castInit.cast);
       } catch (error) {
+        setError(true)
         console.log(error);
       }
     }
@@ -55,16 +59,12 @@ const MovieCast = () => {
   }
 
   return (
-    casts.length > 0 && (
+    error ? <div> </div> : casts.length === 0 ? <p>No cast has been added to this movie yet</p> : (
       <section className={css.casts}>
         <ul className={css['casts-list']}>
           {paintCast(casts)}
         </ul>
-        { viewAll && (
-        <button className={css['view-button']} type="button" onClick={handleSeeAll}>
-          View All
-        </button>
-        ) }
+        {viewAll && <ViewButton handleSeeAll={handleSeeAll} />}
       </section>
     )
   );
