@@ -90,7 +90,10 @@ const HomePage = () => {
           name="time_window"
           id="time_window"
           value={time_window}
-          onChange={evt => setTimeWindow(evt.target.value)}
+          onChange={evt => {
+            setTimeWindow(evt.target.value);
+            setPage(1);
+          }}
         >
           <option value="day">day</option>
           <option value="week">week</option>
