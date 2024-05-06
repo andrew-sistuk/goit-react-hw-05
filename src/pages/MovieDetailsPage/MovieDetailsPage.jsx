@@ -9,6 +9,7 @@ import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
 import clsx from 'clsx';
 
 import css from './MovieDetailsPage.module.css';
+import { setImgPath } from '../../helpers/imgPath';
 
 const MovieDetailsPage = () => {
   const path = 'https://image.tmdb.org/t/p/original';
@@ -64,7 +65,7 @@ const MovieDetailsPage = () => {
         </Link>
         <div className={css['main-data']}>
           <button className={css['trailer-button']} type="button" onClick={handleShowModal}>
-            <img className={css['main-img']} src={path + movie.poster_path} alt={movie.title} />
+            <img className={css['main-img']} src={setImgPath(movie.poster_path, 'w500', 'poster')} alt={movie.title} />
             <div className={css['overlay-play']}>
               <FaPlayCircle className={css['icon-play']} />
             </div>
@@ -72,7 +73,7 @@ const MovieDetailsPage = () => {
           <div className={css['main-info']}>
             <h1 className={css['movie-header']}>{movie.title}</h1>
             <div className={css['sprecific-info']}>
-              <p>{format(movie.release_date, 'MM/dd/yyyy')}</p>
+              {movie.release_date && <p>{format(movie.release_date, 'MM/dd/yyyy')}</p>}
               <p>{writeInfo(movie.genres)}</p>
             </div>
 

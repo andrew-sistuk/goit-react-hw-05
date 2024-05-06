@@ -21,26 +21,24 @@ const MovieCast = () => {
         const castInit = await callTypeInfo(movieId, 'credits');
         setCasts(castInit.cast);
       } catch (errorMsg) {
-        setError(true)
+        setError(true);
         console.log(errorMsg);
       }
     }
     initPage();
   }, [movieId]);
 
-
-
   function handleSeeAll() {
     setSeeAll(false);
   }
 
-   function paintCast(casts) {
-    if(viewAll && casts.length <= 14) {
+  function paintCast(casts) {
+    if (viewAll && casts.length <= 14) {
       setSeeAll(false);
-   }
+    }
 
-    if(viewAll) {
-      casts = casts.slice(0, 14)
+    if (viewAll) {
+      casts = casts.slice(0, 14);
     }
 
     return casts.map(cast => {
@@ -48,24 +46,24 @@ const MovieCast = () => {
         <li className={css['list-item']} key={cast.id}>
           <img
             className={css.img}
-            src={setImgPath(cast.profile_path, 'w500')}
+            src={setImgPath(cast.profile_path, 'w500', 'avatar')}
             alt={cast.name}
           />
-          <h3 className={css.actor}>{cast.name}</h3>
+          <h3 className={css.actor}>{cast.name.trim()}</h3>
         </li>
       );
-    })
+    });
   }
 
-  return (
-    error ? <ErrorMsg/> : casts.length === 0 ? <p>No cast has been added to this movie yet</p> : (
-      <section className={css.casts}>
-        <ul className={css['casts-list']}>
-          {paintCast(casts)}
-        </ul>
-        {viewAll && <ViewButton handleSeeAll={handleSeeAll} />}
-      </section>
-    )
+  return error ? (
+    <ErrorMsg />
+  ) : casts.length === 0 ? (
+    <p>No cast has been added to this movie yet</p>
+  ) : (
+    <section className={css.casts}>
+      <ul className={css['casts-list']}>{paintCast(casts)}</ul>
+      {viewAll && <ViewButton handleSeeAll={handleSeeAll} />}
+    </section>
   );
 };
 

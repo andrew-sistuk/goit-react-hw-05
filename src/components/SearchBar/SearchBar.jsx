@@ -16,29 +16,27 @@ const SearchBar = ({ changeFilter }) => {
   }
 
   return (
-    <header className={css['search-form']}>
-      <form onSubmit={handleSubmit}>
-        <input
-          className={css['search-bar']}
-          name="searchBar"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search you best movie"
-        />
-        <button className={css['submit-button']} type="submit">
-          <FaSearch />
-        </button>
-        <Toaster
-          toastOptions={{
-            style: {
-              backgroundColor: '#c0c0c0',
-              color: 'rgb(27, 24, 56)',
-            },
-          }}
-        />
-      </form>
-    </header>
+    <form className={css['search-form']} onSubmit={handleSubmit}>
+      <input
+        className={css['search-bar']}
+        name="searchBar"
+        type="text"
+        autoComplete="off"
+        autoFocus
+        placeholder="Search you best movie"
+      />
+      <button className={css['submit-button']} type="submit">
+        <FaSearch />
+      </button>
+      <Toaster
+        toastOptions={{
+          style: {
+            backgroundColor: '#c0c0c0',
+            color: 'rgb(27, 24, 56)',
+          },
+        }}
+      />
+    </form>
   );
 };
 

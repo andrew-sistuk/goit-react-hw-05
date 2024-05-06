@@ -45,7 +45,7 @@ const MovieReviews = () => {
         <li className={css.review} key={review.id}>
           <img
             className={css.avatar}
-            src={setImgPath(review.author_details.avatar_path, 'w500')}
+            src={setImgPath(review.author_details.avatar_path, 'w500', 'avatar')}
             alt={review.author}
           />
           <div>

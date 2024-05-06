@@ -15,7 +15,9 @@ const VideoModal = ({ isOpen, handleClose }) => {
     async function initPage() {
       try {
         const trailer = await callTrailer(movieId);
-        setUrlVideo(trailer.results[0].key);
+        if (trailer.results.length !== 0 ) {
+          setUrlVideo(trailer.results[0].key);
+        }
         console.log(trailer);
       } catch (errorMsg) {
         setError(true);
@@ -49,13 +51,15 @@ const VideoModal = ({ isOpen, handleClose }) => {
       {error ? (
         <ErrorMsg />
       ) : (
-        <iframe
-          className={css.video}
-          src={`https://www.youtube.com/embed/${urlVideo}`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        urlVideo ?   (
+            <iframe
+              className={css.video}
+              src={`https://www.youtube.com/embed/${urlVideo}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+        ) : <p>Trailer is missing</p>
       )}
       <MdOutlineClose className={css.close} onClick={handleClose} />
     </ReactModal>

@@ -1,9 +1,9 @@
 // import { Link } from 'react-router-dom';
+import { setImgPath } from '../../helpers/imgPath';
 import css from './MovieList.module.css';
 import { Link, useLocation } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
-  const path = 'https://image.tmdb.org/t/p/w500/';
   const location = useLocation();
   return (
     <ul className={css['gallety-movies']}>
@@ -14,7 +14,7 @@ const MovieList = ({ movies }) => {
               <div className={css.box}>
                 <img
                   className={css['movie-img']}
-                  src={path + movie.poster_path}
+                  src={setImgPath(movie.poster_path, 'w500', 'poster')}
                   alt={movie.title}
                   loading="lazzy"
                 />
