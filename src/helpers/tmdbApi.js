@@ -14,8 +14,9 @@ const options = {
   language: 'en-US',
 };
 
-export async function callTrendings(time_window) {
-  const response = await axios.get(`trending/movie/${time_window}`, options);
+export async function callTrendings(time_window, page) {
+  const response = await axios.get(`trending/movie/${time_window}?page=${page}`, options);
+  console.log(response.data);
   return response.data;
 }
 

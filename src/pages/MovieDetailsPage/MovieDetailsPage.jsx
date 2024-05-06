@@ -12,7 +12,6 @@ import css from './MovieDetailsPage.module.css';
 import { setImgPath } from '../../helpers/imgPath';
 
 const MovieDetailsPage = () => {
-  const path = 'https://image.tmdb.org/t/p/original';
   const [error, setError] = useState(false);
   const [movie, setMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +44,7 @@ const MovieDetailsPage = () => {
   function setBackground(backdrop) {
     return (
       backdrop && {
-        backgroundImage: `url(${path}${backdrop})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop})`,
       }
     );
   }

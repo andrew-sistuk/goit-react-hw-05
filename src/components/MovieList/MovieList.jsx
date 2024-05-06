@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import { setImgPath } from '../../helpers/imgPath';
 import css from './MovieList.module.css';
 import { Link, useLocation } from 'react-router-dom';
@@ -9,7 +8,7 @@ const MovieList = ({ movies }) => {
     <ul className={css['gallety-movies']}>
       {movies.map(movie => {
         return (
-          <li className={css['movies-item']} key={movie.id}>
+          <li className={css['movies-item']} key={movie.id+movie.title}>
             <Link to={`/movies/${movie.id}`} state={location}>
               <div className={css.box}>
                 <img

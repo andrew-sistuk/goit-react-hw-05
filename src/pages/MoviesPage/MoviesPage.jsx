@@ -24,7 +24,7 @@ const MoviesPage = () => {
   });
 
   useEffect(() => {
-    async function callFetchPhotos() {
+    async function callFetchMovie() {
       try {
         if (!query) {
           return;
@@ -53,7 +53,7 @@ const MoviesPage = () => {
         setError(true);
       }
     }
-    callFetchPhotos();
+    callFetchMovie();
   }, [query, page]);
 
   useEffect(() => {

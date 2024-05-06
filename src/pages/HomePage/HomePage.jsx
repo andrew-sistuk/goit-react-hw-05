@@ -2,34 +2,83 @@ import { useEffect, useState } from 'react';
 import MovieList from '../../components/MovieList/MovieList';
 import { callTrendings } from '../../helpers/tmdbApi';
 import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-import { PacmanLoader} from 'react-spinners'
 import css from './HomePage.module.css';
 import clsx from 'clsx';
+import Loader from '../../components/Loader/Loader';
+import { useInView } from 'react-intersection-observer';
 
 const HomePage = () => {
+  const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [time_window, setTimeWindow] = useState('day');
+
+  // Infinity scroll
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
+
   useEffect(() => {
-    async function setTrendings() {
+    async function callFetchMovie() {
       try {
-        const info = await callTrendings(time_window);
+        if (!time_window) {
+          return;
+        }
+
         setLoading(true);
-        setMovies(info.results);
-      }
-      catch(errorMsg) {
+        setError(false);
+        const info = await callTrendings(time_window, page);
+
+        if (
+          parseInt(info.total_pages) === parseInt(page) ||
+          parseInt(info.total_pages) === 0 ||
+          parseInt(info.total_pages) === 1
+        ) {
+          setLoading(false);
+        }
+
+        if (page > 1) {
+          setMovies(prevItems => {
+            return [...prevItems, ...info.results];
+          });
+        } else {
+          setMovies(info.results);
+        }
+      } catch {
         setError(true);
-        console.log(errorMsg);
-      }
-      finally {
-        setLoading(false);
       }
     }
-    setTrendings();
-  }, [time_window]);
+    callFetchMovie();
+  }, [time_window, page]);
 
-  return error ? <ErrorMsg/> : (
+  // useEffect(() => {
+  //   async function setTrendings() {
+  //     try {
+  //       const info = await callTrendings(time_window);
+  //       setLoading(true);
+  //       setMovies(info.results);
+  //     } catch (errorMsg) {
+  //       setError(true);
+  //       console.log(errorMsg);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   setTrendings();
+  // }, [time_window]);
+
+  useEffect(() => {
+    if (inView) {
+      setPage(prevPage => {
+        return prevPage + 1;
+      });
+    }
+  }, [inView]);
+
+  return error ? (
+    <ErrorMsg />
+  ) : (
     <main>
       <section className={clsx(css.hero, 'container')}>
         <h1 className={css.header}>Trending movies</h1>
@@ -47,7 +96,7 @@ const HomePage = () => {
           <option value="week">week</option>
         </select>
         <MovieList movies={movies} />
-        {loading && <PacmanLoader color="#36d7b7" margin='0 auto' />}
+        {loading && <Loader ref={ref} />}
       </section>
     </main>
   );
