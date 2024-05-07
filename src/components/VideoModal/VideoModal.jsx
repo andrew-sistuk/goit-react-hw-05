@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { MdOutlineClose } from 'react-icons/md';
 
-import ErrorMsg from '../ErrorMsg/ErrorMsg';
+// import ErrorMsg from '../ErrorMsg/ErrorMsg';
+import { ErrorMsg } from 'components';
 
 import { callTrailer } from '../../helpers/tmdbApi';
 
 import css from './VideoModal.module.css';
 
-const VideoModal = ({ isOpen, handleClose }) => {
+export const VideoModal = ({ isOpen, handleClose }) => {
   const [error, setError] = useState(false);
   const [urlVideo, setUrlVideo] = useState('');
   const { movieId } = useParams();
@@ -17,7 +18,7 @@ const VideoModal = ({ isOpen, handleClose }) => {
     async function initPage() {
       try {
         const trailer = await callTrailer(movieId);
-        if (trailer.results.length !== 0 ) {
+        if (trailer.results.length !== 0) {
           setUrlVideo(trailer.results[0].key);
         }
         console.log(trailer);
@@ -52,20 +53,18 @@ const VideoModal = ({ isOpen, handleClose }) => {
     >
       {error ? (
         <ErrorMsg />
+      ) : urlVideo ? (
+        <iframe
+          className={css.video}
+          src={`https://www.youtube.com/embed/${urlVideo}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       ) : (
-        urlVideo ?   (
-            <iframe
-              className={css.video}
-              src={`https://www.youtube.com/embed/${urlVideo}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-        ) : <p>Trailer is missing</p>
+        <p>Trailer is missing</p>
       )}
       <MdOutlineClose className={css.close} onClick={handleClose} />
     </ReactModal>
   );
 };
-
-export default VideoModal;

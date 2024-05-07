@@ -1,14 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Navigation from './components/Navigation/Navigation';
+// import Navigation from './components/Navigation/Navigation';
 
-// import { Navigation } from 'components';
-import HomePage from './pages/HomePage/HomePage';
-import MoviesPage from './pages/MoviesPage/MoviesPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
-import MovieCast from './components/MovieCast/MovieCast';
-import MovieReviews from './components/MovieReviews/MovieReviews';
+import { Navigation, MovieCast, MovieReviews } from 'components';
+import { HomePage, MoviesPage, MovieDetailsPage, NotFoundPage  } from 'pages';
+
+// import HomePage from './pages/HomePage/HomePage';
+// import MoviesPage from './pages/MoviesPage/MoviesPage';
+// import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
+// import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+
+// import MovieCast from './components/MovieCast/MovieCast';
+// import MovieReviews from './components/MovieReviews/MovieReviews';
 
 // import { lazy, Suspense } from 'react';
 // const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'));

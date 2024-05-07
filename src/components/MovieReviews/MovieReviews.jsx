@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ViewButton from '../ViewButton/ViewButton';
-import ErrorMsg from '../ErrorMsg/ErrorMsg';
+import {ViewButton,  ErrorMsg } from 'components';
+
+// import ViewButton from '../ViewButton/ViewButton';
+// import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 import { setImgPath } from '../../helpers/imgPath';
 import { callTypeInfo } from '../../helpers/tmdbApi';
@@ -10,7 +12,7 @@ import { callTypeInfo } from '../../helpers/tmdbApi';
 
 import css from './MovieReviews.module.css';
 
-const MovieReviews = () => {
+export const MovieReviews = () => {
   const [error, setError] = useState(false);
   const [viewAll, setSeeAll] = useState(true);
   const [reviews, setReviews] = useState([]);
@@ -69,5 +71,3 @@ const MovieReviews = () => {
     </section>
   );
 };
-
-export default MovieReviews;

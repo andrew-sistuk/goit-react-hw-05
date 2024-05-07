@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import css from './SearchBar.module.css';
 
-const SearchBar = ({ changeFilter }) => {
+export const SearchBar = ({ changeFilter }) => {
   function handleSubmit(evt) {
     evt.preventDefault();
     const { searchBar } = evt.target.elements;
@@ -39,5 +39,3 @@ const SearchBar = ({ changeFilter }) => {
     </form>
   );
 };
-
-export default SearchBar;

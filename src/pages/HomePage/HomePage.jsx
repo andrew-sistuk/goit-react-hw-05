@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import clsx from 'clsx';
 
-import MovieList from '../../components/MovieList/MovieList';
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-import Loader from '../../components/Loader/Loader';
+import { MovieList, Loader, ErrorMsg } from 'components';
+
+// import MovieList from '../../components/MovieList/MovieList';
+// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+// import Loader from '../../components/Loader/Loader';
 
 import { callTrendings } from '../../helpers/tmdbApi';
 
 import css from './HomePage.module.css';
 
-const HomePage = () => {
+export const HomePage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
@@ -55,22 +57,6 @@ const HomePage = () => {
     callFetchMovie();
   }, [time_window, page]);
 
-  // useEffect(() => {
-  //   async function setTrendings() {
-  //     try {
-  //       const info = await callTrendings(time_window);
-  //       setLoading(true);
-  //       setMovies(info.results);
-  //     } catch (errorMsg) {
-  //       setError(true);
-  //       console.log(errorMsg);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   setTrendings();
-  // }, [time_window]);
-
   useEffect(() => {
     if (inView) {
       setPage(prevPage => {
@@ -107,5 +93,3 @@ const HomePage = () => {
     </main>
   );
 };
-
-export default HomePage;

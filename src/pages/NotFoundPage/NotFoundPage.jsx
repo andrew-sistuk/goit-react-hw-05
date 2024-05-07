@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import css from './NotFoundPage.module.css';
 
-const NotFoundPage = () => {
+export const NotFoundPage = () => {
   const { state } = useLocation();
   return (
     <section className={clsx(css.notfound, 'container')}>
@@ -19,5 +19,3 @@ const NotFoundPage = () => {
     </section>
   );
 };
-
-export default NotFoundPage;

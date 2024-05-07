@@ -5,15 +5,17 @@ import { FaPlayCircle } from 'react-icons/fa';
 import { format } from 'date-fns';
 import clsx from 'clsx';
 
-import VideoModal from '../../components/VideoModal/VideoModal';
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+import { VideoModal, ErrorMsg } from 'components';
+
+// import VideoModal from '../../components/VideoModal/VideoModal';
+// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
 
 import { setImgPath } from '../../helpers/imgPath';
 import { callMoviesDetails } from '../../helpers/tmdbApi';
 
 import css from './MovieDetailsPage.module.css';
 
-const MovieDetailsPage = () => {
+export const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
   const [movie, setMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -58,7 +60,9 @@ const MovieDetailsPage = () => {
     setShowModal(prevValue => !prevValue);
   }
 
-  return error ? <ErrorMsg/> : (
+  return error ? (
+    <ErrorMsg />
+  ) : (
     movie && (
       <section className={clsx(css.movie, 'container')}>
         <Link className={css['button-back']} to={location.state ? location.state : '/'}>
@@ -66,7 +70,11 @@ const MovieDetailsPage = () => {
         </Link>
         <div className={css['main-data']}>
           <button className={css['trailer-button']} type="button" onClick={handleShowModal}>
-            <img className={css['main-img']} src={setImgPath(movie.poster_path, 'w500', 'poster')} alt={movie.title} />
+            <img
+              className={css['main-img']}
+              src={setImgPath(movie.poster_path, 'w500', 'poster')}
+              alt={movie.title}
+            />
             <div className={css['overlay-play']}>
               <FaPlayCircle className={css['icon-play']} />
             </div>
@@ -109,5 +117,3 @@ const MovieDetailsPage = () => {
     )
   );
 };
-
-export default MovieDetailsPage;

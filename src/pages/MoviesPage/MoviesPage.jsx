@@ -3,16 +3,18 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import MovieList from '../../components/MovieList/MovieList';
-import Loader from '../../components/Loader/Loader';
+import {Loader, MovieList, SearchBar, ErrorMsg} from 'components';
+
+// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+// import SearchBar from '../../components/SearchBar/SearchBar';
+// import MovieList from '../../components/MovieList/MovieList';
+// import Loader from '../../components/Loader/Loader';
 
 import { searchData } from '../../helpers/tmdbApi';
 
 import css from './MoviesPage.module.css';
 
-const MoviesPage = () => {
+export const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -80,5 +82,3 @@ const MoviesPage = () => {
     </section>
   );
 };
-
-export default MoviesPage;
