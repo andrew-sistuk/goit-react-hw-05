@@ -76,7 +76,7 @@ const MoviesPage = () => {
     <section className={clsx(css.movies, 'container')}>
       <SearchBar changeFilter={changeQuery} />
       {movies.length > 0 && <MovieList movies={movies} />}
-      {loading && <Loader ref={ref} />}
+      {loading && <Loader ref={ref} loading={loading}/>}
     </section>
   );
 };

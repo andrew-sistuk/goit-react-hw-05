@@ -102,7 +102,7 @@ const HomePage = () => {
           <option value="week">week</option>
         </select>
         <MovieList movies={movies} />
-        {loading && <Loader ref={ref} />}
+        {loading && <Loader ref={ref} loading={loading}/>}
       </section>
     </main>
   );
