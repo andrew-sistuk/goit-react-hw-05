@@ -85,7 +85,7 @@ const HomePage = () => {
     <main>
       <section className={clsx(css.hero, 'container')}>
         <h1 className={css.header}>Trending movies</h1>
-        <img className={css['hero-img']} src="/src/assets/hero.png" alt="hero" />
+        <img className={css['hero-img']} src="/hero.png" alt="hero" />
       </section>
       <section className={clsx(css.movies, 'container')}>
         <select
