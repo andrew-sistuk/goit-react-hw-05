@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import MovieList from '../../components/MovieList/MovieList';
-import { callTrendings } from '../../helpers/tmdbApi';
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-import css from './HomePage.module.css';
-import clsx from 'clsx';
-import Loader from '../../components/Loader/Loader';
 import { useInView } from 'react-intersection-observer';
+import clsx from 'clsx';
+
+import MovieList from '../../components/MovieList/MovieList';
+import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+import Loader from '../../components/Loader/Loader';
+
+import { callTrendings } from '../../helpers/tmdbApi';
+
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   const [page, setPage] = useState(1);

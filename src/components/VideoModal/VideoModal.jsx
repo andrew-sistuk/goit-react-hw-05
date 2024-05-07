@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { MdOutlineClose } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { callTrailer } from '../../helpers/tmdbApi';
+
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
+
+import { callTrailer } from '../../helpers/tmdbApi';
 
 import css from './VideoModal.module.css';
 

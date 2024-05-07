@@ -1,11 +1,12 @@
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import MovieList from '../../components/MovieList/MovieList';
-import Loader from '../../components/Loader/Loader';
 
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
+
+import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import MovieList from '../../components/MovieList/MovieList';
+import Loader from '../../components/Loader/Loader';
 
 import { searchData } from '../../helpers/tmdbApi';
 

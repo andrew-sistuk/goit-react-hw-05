@@ -1,5 +1,6 @@
 import { PacmanLoader } from 'react-spinners';
 import { forwardRef } from 'react';
+
 import css from './Loader.module.css';
 
 const Loader = forwardRef(function Loader(props, ref) {

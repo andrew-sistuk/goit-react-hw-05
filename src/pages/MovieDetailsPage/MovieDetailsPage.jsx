@@ -1,15 +1,17 @@
-import { useParams, Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { callMoviesDetails } from '../../helpers/tmdbApi';
 import { useState, useEffect } from 'react';
-import { format } from 'date-fns';
+import { useParams, Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { FaPlayCircle } from 'react-icons/fa';
-import VideoModal from '../../components/VideoModal/VideoModal';
-import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+import { format } from 'date-fns';
 import clsx from 'clsx';
 
-import css from './MovieDetailsPage.module.css';
+import VideoModal from '../../components/VideoModal/VideoModal';
+import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
+
 import { setImgPath } from '../../helpers/imgPath';
+import { callMoviesDetails } from '../../helpers/tmdbApi';
+
+import css from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const [error, setError] = useState(false);

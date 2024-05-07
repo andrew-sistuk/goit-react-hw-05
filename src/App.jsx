@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation';
+
+// import { Navigation } from 'components';
 import HomePage from './pages/HomePage/HomePage';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';

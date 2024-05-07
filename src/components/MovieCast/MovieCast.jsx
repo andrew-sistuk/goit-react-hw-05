@@ -1,9 +1,11 @@
 import { callTypeInfo } from '../../helpers/tmdbApi';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { setImgPath } from '../../helpers/imgPath';
+
 import ViewButton from '../ViewButton/ViewButton';
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
+
+import { setImgPath } from '../../helpers/imgPath';
 
 import css from './MovieCast.module.css';
 
