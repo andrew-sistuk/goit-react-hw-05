@@ -15,9 +15,10 @@ import { searchData } from '../../helpers/tmdbApi';
 import css from './MoviesPage.module.css';
 
 export const MoviesPage = () => {
+  // const [isFirstRender, setIsFirstRender] = useState(false);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -60,6 +61,7 @@ export const MoviesPage = () => {
   }, [query, page]);
 
   useEffect(() => {
+    // setIsFirstRender(true);
     if (inView) {
       setPage(prevPage => {
         return prevPage + 1;
@@ -77,7 +79,7 @@ export const MoviesPage = () => {
   ) : (
     <section className={clsx(css.movies, 'container')}>
       <SearchBar changeFilter={changeQuery} />
-      {movies.length > 0 && <MovieList movies={movies} />}
+      <MovieList movies={movies} />
       {loading && <Loader ref={ref} loading={loading}/>}
     </section>
   );
