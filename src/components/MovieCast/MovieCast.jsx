@@ -11,7 +11,7 @@ import { setImgPath } from '../../helpers/imgPath';
 
 import css from './MovieCast.module.css';
 
-export const MovieCast = () => {
+const MovieCast = () => {
   const [error, setError] = useState(false);
   const [casts, setCasts] = useState([]);
   const [viewAll, setSeeAll] = useState(true);
@@ -70,3 +70,5 @@ export const MovieCast = () => {
     </section>
   );
 };
+
+export default MovieCast;

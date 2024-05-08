@@ -15,7 +15,7 @@ import { callMoviesDetails } from '../../helpers/tmdbApi';
 
 import css from './MovieDetailsPage.module.css';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
   const [movie, setMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -118,3 +118,5 @@ export const MovieDetailsPage = () => {
     )
   );
 };
+
+export default MovieDetailsPage;

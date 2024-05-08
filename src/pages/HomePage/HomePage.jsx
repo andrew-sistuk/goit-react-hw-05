@@ -12,7 +12,7 @@ import { callTrendings } from '../../helpers/tmdbApi';
 
 import css from './HomePage.module.css';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
@@ -93,3 +93,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+export default HomePage;

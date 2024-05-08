@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import css from './Navigation.module.css';
 
-export const Navigation = () => {
+const Navigation = () => {
   const handleClassLink = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -30,3 +30,5 @@ export const Navigation = () => {
     </header>
   );
 };
+
+export default Navigation;

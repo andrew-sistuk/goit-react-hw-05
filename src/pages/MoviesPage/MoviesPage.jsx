@@ -15,7 +15,7 @@ import { searchData } from '../../helpers/tmdbApi';
 import css from './MoviesPage.module.css';
 import { useSearchParams } from 'react-router-dom';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
@@ -87,3 +87,5 @@ export const MoviesPage = () => {
     </section>
   );
 };
+
+export default MoviesPage;

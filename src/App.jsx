@@ -1,23 +1,23 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+const HomePage = lazy(() => import('../src/pages/HomePage/HomePage'));
+const MoviesPage= lazy(() => import('../src/pages/MoviesPage/MoviesPage'));
+const MovieDetailsPage = lazy(() => import('../src/pages/MovieDetailsPage/MovieDetailsPage'));
+const NotFoundPage = lazy(() => import('../src/pages/NotFoundPage/NotFoundPage'));
+
+const Navigation = lazy(() => import('../src/components/Navigation/Navigation'));
+const MovieCast = lazy(() => import('../src/components/MovieCast/MovieCast'));
+const MovieReviews = lazy(() => import('../src/components/MovieReviews/MovieReviews'));
+
+
+import { Loader } from 'components';
+
+// import { Navigation, MovieCast, MovieReviews } from 'components';
+
 // import Navigation from './components/Navigation/Navigation';
-
-const NotFoundPage = lazy(() => import('pages'));
-
-import { Navigation, Loader, MovieCast, MovieReviews } from 'components';
-import { HomePage, MoviesPage, MovieDetailsPage } from 'pages';
-
-// import HomePage from './pages/HomePage/HomePage';
-// import MoviesPage from './pages/MoviesPage/MoviesPage';
-// import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
-// import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-
 // import MovieCast from './components/MovieCast/MovieCast';
 // import MovieReviews from './components/MovieReviews/MovieReviews';
-
-// import { lazy, Suspense } from 'react';
-// const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'));
 
 import './App.css';
 import 'modern-normalize';
@@ -25,8 +25,8 @@ import 'modern-normalize';
 function App() {
   return (
     <>
-      <Navigation />
       <Suspense fallback={<Loader />}>
+      <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />

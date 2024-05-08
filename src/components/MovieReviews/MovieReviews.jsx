@@ -12,7 +12,7 @@ import { callTypeInfo } from '../../helpers/tmdbApi';
 
 import css from './MovieReviews.module.css';
 
-export const MovieReviews = () => {
+const MovieReviews = () => {
   const [error, setError] = useState(false);
   const [viewAll, setSeeAll] = useState(true);
   const [reviews, setReviews] = useState([]);
@@ -71,3 +71,5 @@ export const MovieReviews = () => {
     </section>
   );
 };
+
+export default MovieReviews;
