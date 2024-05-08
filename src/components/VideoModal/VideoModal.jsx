@@ -10,7 +10,7 @@ import { callTrailer } from 'helpers';
 
 import css from './VideoModal.module.css';
 
-export const VideoModal = ({ isOpen, handleClose }) => {
+const VideoModal = ({ isOpen, handleClose }) => {
   const [error, setError] = useState(false);
   const [urlVideo, setUrlVideo] = useState('');
   const { movieId } = useParams();
@@ -68,3 +68,5 @@ export const VideoModal = ({ isOpen, handleClose }) => {
     </ReactModal>
   );
 };
+
+export default VideoModal;

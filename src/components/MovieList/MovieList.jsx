@@ -4,7 +4,7 @@ import { setImgPath } from 'helpers';
 
 import css from './MovieList.module.css';
 
-export const MovieList = ({ movies }) => {
+const MovieList = ({ movies }) => {
   const location = useLocation();
   return (
     <ul className={css['gallety-movies']}>
@@ -29,3 +29,5 @@ export const MovieList = ({ movies }) => {
     </ul>
   );
 };
+
+export default MovieList;

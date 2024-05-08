@@ -77,7 +77,6 @@ const MoviesPage = () => {
   function changeQuery(value) {
     searchParams.set('query', value)
     setSearchParams(searchParams);
-    // setQuery(value);
     setPage(1);
   }
 

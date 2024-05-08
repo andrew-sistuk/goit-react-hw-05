@@ -40,3 +40,5 @@ export const SearchBar = ({ changeFilter }) => {
     </form>
   );
 };
+
+export default SearchBar;

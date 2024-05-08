@@ -7,3 +7,5 @@ export const ViewButton = ({ handleSeeAll }) => {
     </button>
   );
 };
+
+export default ViewButton;

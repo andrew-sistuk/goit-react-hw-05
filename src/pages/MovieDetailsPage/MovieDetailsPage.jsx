@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { FaPlayCircle } from 'react-icons/fa';
 import { format } from 'date-fns';
 import clsx from 'clsx';
 
-import { VideoModal, ErrorMsg } from 'components';
+import { VideoModal, ErrorMsg, Loader } from 'components';
 
 import { setImgPath, callMoviesDetails } from 'helpers';
 
@@ -108,7 +108,9 @@ const MovieDetailsPage = () => {
             </NavLink>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
         <VideoModal isOpen={showModal} handleClose={handleShowModal} />
       </section>
     )

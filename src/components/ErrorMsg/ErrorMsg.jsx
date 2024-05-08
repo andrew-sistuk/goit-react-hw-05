@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import css from './ErrorMsg.module.css';
 
-export const ErrorMsg = () => {
+const ErrorMsg = () => {
   const {pathname, state} = useLocation();
   return (
     <div className={clsx(css.notfound,'container')}>
@@ -19,3 +19,5 @@ export const ErrorMsg = () => {
     </div>
   );
 };
+
+export default ErrorMsg;
