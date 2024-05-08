@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { FaPlayCircle } from 'react-icons/fa';
@@ -20,7 +20,8 @@ export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { movieId } = useParams();
-  const location = useLocation();
+  const { state } = useLocation();
+  const locationBack = useRef(state);
 
   useEffect(() => {
     if (!movieId) return;
@@ -65,7 +66,7 @@ export const MovieDetailsPage = () => {
   ) : (
     movie && (
       <section className={clsx(css.movie, 'container')}>
-        <Link className={css['button-back']} to={location.state ? location.state : '/'}>
+        <Link className={css['button-back']} to={locationBack.current ? locationBack.current : '/'}>
           <RiArrowGoBackFill /> Back
         </Link>
         <div className={css['main-data']}>

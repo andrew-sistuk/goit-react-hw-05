@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import css from './SearchBar.module.css';
 
 export const SearchBar = ({ changeFilter }) => {
+
   function handleSubmit(evt) {
     evt.preventDefault();
     const { searchBar } = evt.target.elements;

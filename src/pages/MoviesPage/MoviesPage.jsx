@@ -13,14 +13,16 @@ import {Loader, MovieList, SearchBar, ErrorMsg} from 'components';
 import { searchData } from '../../helpers/tmdbApi';
 
 import css from './MoviesPage.module.css';
+import { useSearchParams } from 'react-router-dom';
 
 export const MoviesPage = () => {
-  // const [isFirstRender, setIsFirstRender] = useState(false);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+
 
   // Infinity scroll
   const { ref, inView } = useInView({
@@ -34,10 +36,9 @@ export const MoviesPage = () => {
           return;
         }
 
-        setLoading(true);
         setError(false);
         const data = await searchData(query, page);
-
+        
         if (
           parseInt(data.total_pages) === parseInt(page) ||
           parseInt(data.total_pages) === 0 ||
@@ -45,12 +46,13 @@ export const MoviesPage = () => {
         ) {
           setLoading(false);
         }
-
+        
         if (page > 1) {
           setMovies(prevItems => {
             return [...prevItems, ...data.results];
           });
         } else {
+          setLoading(true);
           setMovies(data.results);
         }
       } catch {
@@ -61,7 +63,6 @@ export const MoviesPage = () => {
   }, [query, page]);
 
   useEffect(() => {
-    // setIsFirstRender(true);
     if (inView) {
       setPage(prevPage => {
         return prevPage + 1;
@@ -70,7 +71,9 @@ export const MoviesPage = () => {
   }, [inView]);
 
   function changeQuery(value) {
-    setQuery(value);
+    searchParams.set('query', value)
+    setSearchParams(searchParams);
+    // setQuery(value);
     setPage(1);
   }
 

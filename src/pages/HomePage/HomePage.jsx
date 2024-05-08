@@ -31,10 +31,9 @@ export const HomePage = () => {
           return;
         }
 
-        setLoading(true);
         setError(false);
         const info = await callTrendings(time_window, page);
-
+        
         if (
           parseInt(info.total_pages) === parseInt(page) ||
           parseInt(info.total_pages) === 0 ||
@@ -42,12 +41,13 @@ export const HomePage = () => {
         ) {
           setLoading(false);
         }
-
+        
         if (page > 1) {
           setMovies(prevItems => {
             return [...prevItems, ...info.results];
           });
         } else {
+          setLoading(true);
           setMovies(info.results);
         }
       } catch {
