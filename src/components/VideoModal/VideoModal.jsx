@@ -6,7 +6,7 @@ import { MdOutlineClose } from 'react-icons/md';
 // import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import { ErrorMsg } from 'components';
 
-import { callTrailer } from '../../helpers/tmdbApi';
+import { callTrailer } from 'helpers';
 
 import css from './VideoModal.module.css';
 

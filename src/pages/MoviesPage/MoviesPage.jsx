@@ -1,32 +1,28 @@
 
 import { useInView } from 'react-intersection-observer';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import {Loader, MovieList, SearchBar, ErrorMsg} from 'components';
 
-// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-// import SearchBar from '../../components/SearchBar/SearchBar';
-// import MovieList from '../../components/MovieList/MovieList';
-// import Loader from '../../components/Loader/Loader';
-
-import { searchData } from '../../helpers/tmdbApi';
+import { searchData } from 'helpers';
 
 import css from './MoviesPage.module.css';
-import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingFirst, setLoadingFirst] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
 
   // Infinity scroll
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.5,
   });
 
   useEffect(() => {
@@ -34,6 +30,13 @@ const MoviesPage = () => {
       try {
         if (!query) {
           return;
+        }
+
+        if (page === 1) {
+          setLoadingFirst(true);
+        }
+        else {
+          setLoadingFirst(false);
         }
 
         setError(false);
@@ -53,6 +56,7 @@ const MoviesPage = () => {
           });
         } else {
           setLoading(true);
+          setLoadingFirst(false);
           setMovies(data.results);
         }
       } catch {
@@ -83,6 +87,7 @@ const MoviesPage = () => {
     <section className={clsx(css.movies, 'container')}>
       <SearchBar changeFilter={changeQuery} />
       <MovieList movies={movies} />
+      {loadingFirst && <Loader loading={loadingFirst}/>}
       {loading && <Loader ref={ref} loading={loading}/>}
     </section>
   );

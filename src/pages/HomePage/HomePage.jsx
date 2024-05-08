@@ -4,11 +4,7 @@ import clsx from 'clsx';
 
 import { MovieList, Loader, ErrorMsg } from 'components';
 
-// import MovieList from '../../components/MovieList/MovieList';
-// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-// import Loader from '../../components/Loader/Loader';
-
-import { callTrendings } from '../../helpers/tmdbApi';
+import { callTrendings } from 'helpers';
 
 import css from './HomePage.module.css';
 
@@ -17,11 +13,12 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingFirst, setLoadingFirst] = useState(false);
   const [time_window, setTimeWindow] = useState('day');
 
   // Infinity scroll
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.5,
   });
 
   useEffect(() => {
@@ -29,6 +26,13 @@ const HomePage = () => {
       try {
         if (!time_window) {
           return;
+        }
+
+        if (page === 1) {
+          setLoadingFirst(true);
+        }
+        else {
+          setLoadingFirst(false);
         }
 
         setError(false);
@@ -48,6 +52,7 @@ const HomePage = () => {
           });
         } else {
           setLoading(true);
+          setLoadingFirst(false);
           setMovies(info.results);
         }
       } catch {
@@ -88,6 +93,7 @@ const HomePage = () => {
           <option value="week">week</option>
         </select>
         <MovieList movies={movies} />
+        {loadingFirst && <Loader loading={loadingFirst}/>}
         {loading && <Loader ref={ref} loading={loading}/>}
       </section>
     </main>

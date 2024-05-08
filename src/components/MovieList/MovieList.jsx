@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import { setImgPath } from '../../helpers/imgPath';
+import { setImgPath } from 'helpers';
 
 import css from './MovieList.module.css';
 

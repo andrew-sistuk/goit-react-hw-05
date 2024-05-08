@@ -7,11 +7,7 @@ import clsx from 'clsx';
 
 import { VideoModal, ErrorMsg } from 'components';
 
-// import VideoModal from '../../components/VideoModal/VideoModal';
-// import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
-
-import { setImgPath } from '../../helpers/imgPath';
-import { callMoviesDetails } from '../../helpers/tmdbApi';
+import { setImgPath, callMoviesDetails } from 'helpers';
 
 import css from './MovieDetailsPage.module.css';
 

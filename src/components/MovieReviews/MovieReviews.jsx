@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {ViewButton,  ErrorMsg } from 'components';
+import { ViewButton, ErrorMsg } from 'components';
 
-// import ViewButton from '../ViewButton/ViewButton';
-// import ErrorMsg from '../ErrorMsg/ErrorMsg';
-
-import { setImgPath } from '../../helpers/imgPath';
-import { callTypeInfo } from '../../helpers/tmdbApi';
-
+import { setImgPath, callTypeInfo } from 'helpers/';
 
 import css from './MovieReviews.module.css';
 
@@ -62,7 +57,9 @@ const MovieReviews = () => {
     });
   }
 
-  return error ? <ErrorMsg /> :reviews.length === 0 ? (
+  return error ? (
+    <ErrorMsg />
+  ) : reviews.length === 0 ? (
     <p>There are currently no reviews for this movie</p>
   ) : (
     <section className={css.reviews}>
