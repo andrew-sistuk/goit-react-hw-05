@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { MdOutlineClose } from 'react-icons/md';
 
-// import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import { ErrorMsg } from 'components';
 
 import { callTrailer } from 'helpers';
