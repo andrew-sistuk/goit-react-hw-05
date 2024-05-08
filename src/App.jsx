@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // import Navigation from './components/Navigation/Navigation';
 
-const NotFoundPage = React.lazy(() => import('pages'));
+const NotFoundPage = lazy(() => import('pages'));
 
 import { Navigation, Loader, MovieCast, MovieReviews } from 'components';
-import {HomePage, MoviesPage, MovieDetailsPage } from 'pages';
+import { HomePage, MoviesPage, MovieDetailsPage } from 'pages';
 
 // import HomePage from './pages/HomePage/HomePage';
 // import MoviesPage from './pages/MoviesPage/MoviesPage';
